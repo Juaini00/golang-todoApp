@@ -38,9 +38,6 @@ go.work.sum
 .env.*
 *.local
 
-# Module cache (if using go modules outside GOPATH)
-pkg/
-
 # Test results
 *.tmp
 *.temp
