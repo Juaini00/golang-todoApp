@@ -29,7 +29,13 @@ func SetupRoutes(r *gin.Engine, db *gorm.DB) {
 	protected := api.Group("/")
 	protected.Use(middleware.AuthenticationMiddleware(UserRepository, UserDetailRepository))
 	{
-		protected.GET("/test", delivery.Test)
+
+		protected.GET("/test", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"status":  200,
+				"message": "Hello World!",
+			})
+		})
 		protected.POST("/todo", todoHandler.Create)
 		protected.GET("/todo", todoHandler.List)
 	}
