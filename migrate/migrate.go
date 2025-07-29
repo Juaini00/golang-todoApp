@@ -15,6 +15,7 @@ func main() {
 	err := config.DB.AutoMigrate(
 		&entity.User{},
 		&entity.UserDetail{},
+		&entity.Todo{},
 	)
 	if err != nil {
 		return
