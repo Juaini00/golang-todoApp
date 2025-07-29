@@ -1,0 +1,59 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of the go coverage tool
+*.coverprofile
+
+# Dependency directories (remove the ones you don't use!)
+vendor/
+bin/
+build/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor config
+.vscode/
+.idea/
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Environment & config files
+.env
+.env.*
+*.local
+
+# Module cache (if using go modules outside GOPATH)
+pkg/
+
+# Test results
+*.tmp
+*.temp
+*.cache
+
+# Node/npm if frontend is in the same repo
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Docker
+docker-compose.override.yml
+*.envrc
+
+# GitHub Codespaces
+.devcontainer/
