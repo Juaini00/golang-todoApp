@@ -20,6 +20,17 @@ func NewTodoHandler(u usecase.TodoUsecaseImpl) *TodoHandler {
 	return &TodoHandler{usecase: u}
 }
 
+// Create adds a new todo.
+// @Summary Create todo
+// @Tags todo
+// @Security BearerAuth
+// @Accept json
+// @Produce json
+// @Param request body TodoRequest true "New todo"
+// @Success 201 {object} map[string]interface{}
+// @Failure 400 {object} map[string]interface{}
+// @Failure 500 {object} map[string]interface{}
+// @Router /todo [post]
 func (h *TodoHandler) Create(c *gin.Context) {
 	req := TodoRequest{}
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -36,6 +47,14 @@ func (h *TodoHandler) Create(c *gin.Context) {
 	c.JSON(http.StatusCreated, utils.BuildResponse(http.StatusCreated, "Todo created", todo))
 }
 
+// List returns user's todos.
+// @Summary List todos
+// @Tags todo
+// @Security BearerAuth
+// @Produce json
+// @Success 200 {object} map[string]interface{}
+// @Failure 500 {object} map[string]interface{}
+// @Router /todo [get]
 func (h *TodoHandler) List(c *gin.Context) {
 	userCtxVal, _ := c.Get("userContext")
 	userCtx := userCtxVal.(*entity.User)
