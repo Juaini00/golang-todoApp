@@ -32,6 +32,16 @@ func NewAuthHandler(authUsecase usecase.UserUsecaseImpl) *AuthHandler {
 	return &AuthHandler{authUsecase: authUsecase}
 }
 
+// Register handles user registration.
+// @Summary Register new user
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param request body RegisterRequest true "Register data"
+// @Success 201 {object} map[string]interface{}
+// @Failure 400 {object} map[string]interface{}
+// @Failure 500 {object} map[string]interface{}
+// @Router /auth/register [post]
 func (h *AuthHandler) Register(c *gin.Context) {
 	authRequest := RegisterRequest{}
 
@@ -55,6 +65,16 @@ func (h *AuthHandler) Register(c *gin.Context) {
 	c.JSON(200, utils.BuildResponse(http.StatusCreated, "Register was successfully", response))
 }
 
+// Login handles user login.
+// @Summary Login user
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param request body LoginRequest true "Login data"
+// @Success 200 {object} map[string]interface{}
+// @Failure 400 {object} map[string]interface{}
+// @Failure 500 {object} map[string]interface{}
+// @Router /auth/login [post]
 func (h *AuthHandler) Login(c *gin.Context) {
 	authRequest := LoginRequest{}
 
